@@ -5,6 +5,7 @@ const path = require('path');
 require('dotenv').config();
 
 const { testConnection } = require('./config/database');
+const { apiLimiter } = require('./middleware/rateLimitMiddleware');
 
 // Importar rutas
 const authRoutes = require('./routes/authRoutes');
@@ -21,6 +22,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Aplicar rate limiting a todas las rutas de API
+app.use('/api', apiLimiter);
 
 // Servir archivos estáticos
 app.use(express.static(path.join(__dirname, 'public')));

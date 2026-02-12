@@ -3,12 +3,13 @@ const router = express.Router();
 const TareaController = require('../controllers/tareaController');
 const { authenticateToken, isLider } = require('../middleware/authMiddleware');
 const { validateTarea } = require('../middleware/validationMiddleware');
+const { createLimiter } = require('../middleware/rateLimitMiddleware');
 
 // Todas las rutas requieren autenticación
 router.use(authenticateToken);
 
 // Rutas de tareas
-router.post('/', isLider, validateTarea, TareaController.create);
+router.post('/', isLider, createLimiter, validateTarea, TareaController.create);
 router.get('/', TareaController.getAll);
 router.get('/:id', TareaController.getById);
 router.get('/celula/:celula_id', TareaController.getByCelula);
