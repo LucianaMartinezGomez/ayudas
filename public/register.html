@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrarse - Sistema de Gestión de Tareas</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <h1>Registrarse</h1>
+            
+            <form id="registerForm" class="auth-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="apellido">Apellido</label>
+                    <input type="text" id="apellido" name="apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" name="password" required minlength="6">
+                    <small>Mínimo 6 caracteres</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar Contraseña</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="rol">Rol</label>
+                    <select id="rol" name="rol" required>
+                        <option value="estudiante">Estudiante</option>
+                        <option value="lider">Líder de Célula</option>
+                        <option value="administrador">Profesor (Administrador)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="codigo_celula">Código de Célula (Opcional)</label>
+                    <input type="text" id="codigo_celula" name="codigo_celula" placeholder="Ej: CLAN-12345678-C1">
+                    <small>Si eres estudiante, ingresa el código de tu célula</small>
+                </div>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                <div id="successMessage" class="success-message" style="display: none;"></div>
+
+                <button type="submit" class="btn btn-primary">Registrarse</button>
+            </form>
+
+            <div class="auth-links">
+                <p>¿Ya tienes cuenta? <a href="/login.html">Inicia sesión aquí</a></p>
+                <p><a href="/index.html">Volver al inicio</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/auth.js"></script>
+</body>
+</html>
